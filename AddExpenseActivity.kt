@@ -81,10 +81,10 @@ class AddExpenseActivity : AppCompatActivity() {
                     startActivity(Intent.createChooser(viewIntent, "Open Bill File With"))
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Toast.makeText(this, "⚠️ Cannot open file", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Cannot open file", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "❌ No file selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -106,7 +106,7 @@ class AddExpenseActivity : AppCompatActivity() {
 
                 // Save to DB
                 ExpenseDatabase.getDatabase(this@AddExpenseActivity).expenseDao().insertExpense(expense)
-                Toast.makeText(this@AddExpenseActivity, "✅ Expense Submitted Successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddExpenseActivity, "Expense Submitted Successfully!", Toast.LENGTH_SHORT).show()
 
                 // Export All Expenses
                 val expenses = ExpenseDatabase.getDatabase(this@AddExpenseActivity).expenseDao().getAllExpenses()
@@ -123,14 +123,14 @@ class AddExpenseActivity : AppCompatActivity() {
             if (uri != null) {
                 selectedFilePath = uri.toString()
                 billFilePathEditText.setText(selectedFilePath)
-                Toast.makeText(this, "✅ File Selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "File Selected", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "❌ File not selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, " File not selected", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    // Excel Export Logic (✅ Saves to Downloads)
+
     private fun exportToExcel(expenseList: List<Expense>) {
         val workbook = XSSFWorkbook()
         val sheet = workbook.createSheet("Expenses")
@@ -158,7 +158,7 @@ class AddExpenseActivity : AppCompatActivity() {
             workbook.write(fos)
             fos.close()
 
-            Toast.makeText(this, "✅ Excel exported to: ${file.absolutePath}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Excel exported to: ${file.absolutePath}", Toast.LENGTH_LONG).show()
 
             val uri = FileProvider.getUriForFile(
                 this,
@@ -175,7 +175,8 @@ class AddExpenseActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(this, "❌ Export failed: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Export failed: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 }
+
