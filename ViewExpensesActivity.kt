@@ -82,7 +82,7 @@ class ViewExpensesActivity : AppCompatActivity() {
             workbook.write(fos)
             fos.close()
 
-            Toast.makeText(this, "✅ Exported to: ${file.absolutePath}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Exported to: ${file.absolutePath}", Toast.LENGTH_SHORT).show()
 
             val uri: Uri = FileProvider.getUriForFile(
                 this,
@@ -100,7 +100,8 @@ class ViewExpensesActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             e.printStackTrace()
-            Toast.makeText(this, "❌ Export failed: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Export failed: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 }
+
